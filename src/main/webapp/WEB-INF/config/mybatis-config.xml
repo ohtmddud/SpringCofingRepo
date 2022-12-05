@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//UTF-8" "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.multi.erp.board.BoardDTO" alias="board" />
+		<typeAlias type="emp.EmpDTO" alias="user" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mapper/board.xml" />
+	</mappers>
+
+</configuration>
