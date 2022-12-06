@@ -8,7 +8,11 @@
 	</insert>
 	
 	<select id="selectAll" resultType="board">
-		select * from tbboard
+		select * from tbboard order by board_no desc
+	</select>
+	
+	<select id="categorySelect" resultType="board" parameterType="String">
+		select * from tbboard where category = #{category}
 	</select>
 	
 	<select id="read" resultType="board" parameterType="String">
@@ -28,17 +32,26 @@
 		select * from tbboard where title like '%' || #{title} || '%'
 	</select>
 	
-	<insert id="insert" parameterType="user">
-		insert into myemp 
-		values(#{deptno}, #{name}, #{id}, #{pass}, #{addr}, 1000, #{grade})"
-	</insert>
+	<select id="dynamicSearch" resultType="board" parameterType="Map">
+		select * from tbboard
+		<where>
+			<if test = "tag=='title' and data!=''">
+				title like '%' || #{data} || '%'
+			</if>
+			<if test = "tag=='id' and data!=''">
+				id like '%' || #{data} || '%'
+			</if>
+			<if test = "tag=='content' and data!=''">
+				content like '%' || #{data} || '%'
+			</if>
+			<if test = "tag=='write_date' and data!=''">
+				<!-- C DATA Session 의 활용 -->
+				<![CDATA[
+					write_date <= #{data}
+				]]>
+				
+			</if>
+		</where>
+	</select>
 	
-	
-	
-	
-<!-- 	<insert id="select" parameterType="user"> -->
-<!-- 		select * from myemp -->
-<!-- 	</insert> -->
-
-
 </mapper>
