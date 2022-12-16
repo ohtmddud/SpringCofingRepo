@@ -73,6 +73,25 @@
 		<beans:constructor-arg ref = "sqlSessionFactory" />	
 	</beans:bean>
 	
+	<!-- 인터셉터 -->
+	<interceptors>
+		<interceptor>
+			<mapping path = "/**" />
+			<exclude-mapping path="/login.do" />
+			<exclude-mapping path="/index.do" />
+			<exclude-mapping path="/board/list.do" />
+			<beans:bean class = "com.multi.erp.etc.LoginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<!-- <mapping path="/**"/> -->
+			<mapping path="/board/**" />
+			<mapping path="/emp/mypage/myjob" />
+			<exclude-mapping path="/board/download/**"/>
+			<beans:bean class="com.multi.erp.etc.TimeCheckInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 		
 	<!-- 파일 업로드 -->
 	<beans:bean id = "multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
