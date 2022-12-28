@@ -73,6 +73,16 @@
 		<beans:constructor-arg ref = "sqlSessionFactory" />	
 	</beans:bean>
 	
+	<!-- *** MongoDB 설정하기 *** -->
+	<mongo:mongo id="mongods" host="192.168.219.102" port="27017"/>
+	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<!-- 매개변수 2개 생성자 -->
+		<beans:constructor-arg ref="mongods"/>
+		<beans:constructor-arg name="databaseName" value="sample"/>
+	</beans:bean>
+		<!-- MongoDB 데이터가 저장 될 Repo Class 가 있는 위치를 정의 -->
+	<mongo:repositories base-package="spring.data.mongodb.score"/>
+	
 	<!-- 인터셉터 -->
 	<interceptors>
 		<interceptor>
