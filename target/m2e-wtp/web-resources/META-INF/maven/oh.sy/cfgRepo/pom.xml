@@ -21,6 +21,25 @@
 	</properties>
 	<dependencies>
 	
+		<!-- Spring AOP -->	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+	
+		<!-- spring-data-mongodb -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-mongodb</artifactId>
+		    <version>1.6.0.RELEASE</version>
+		</dependency>
+	
 		<!-- 파일 업로드 관련 라이브러리 -->	
 		<dependency>
 			<groupId>commons-fileupload</groupId>

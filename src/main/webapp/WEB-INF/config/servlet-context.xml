@@ -3,9 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -93,13 +99,13 @@
 			<beans:bean class = "com.multi.erp.etc.LoginInterceptor"/>
 		</interceptor>
 		
-		<interceptor>
-			<!-- <mapping path="/**"/> -->
-			<mapping path="/board/**" />
-			<mapping path="/emp/mypage/myjob" />
-			<exclude-mapping path="/board/download/**"/>
-			<beans:bean class="com.multi.erp.etc.TimeCheckInterceptor" />
-		</interceptor>
+<!-- 		<interceptor> -->
+<!-- 			<!-- <mapping path="/**"/> -->
+<!-- 			<mapping path="/board/**" /> -->
+<!-- 			<mapping path="/emp/mypage/myjob" /> -->
+<!-- 			<exclude-mapping path="/board/download/**"/> -->
+<!-- 			<beans:bean class="com.multi.erp.etc.TimeCheckInterceptor" /> -->
+<!-- 		</interceptor> -->
 	</interceptors>
 	
 		
@@ -112,5 +118,10 @@
 	<context:component-scan base-package="oh.sy.cfgRepo" />
 	<context:component-scan base-package="com" />
 	<context:component-scan base-package="mapper" />
+	
+	<!-- Spring AOP -->
+	<!-- aop 작업을 수행하는 proxy가 자동으로 감지해서 aop 등록된 것을 확인하고 실행 될 수 있도록 처리-->
+	<!-- namespaces 수정 -->
+	<aop:aspectj-autoproxy/>
 	
 </beans:beans>

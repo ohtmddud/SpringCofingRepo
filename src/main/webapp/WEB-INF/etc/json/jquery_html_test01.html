@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>html_test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="test1">JQuery~~~</div>
+	<div class="test2">JQuery~~~~</div>
+	<div id="test3">JQuery~~~~</div>
+	<div id="test4">JQuery~~~~</div>
+	<div id="test5">JQuery~~~~</div>
+	<p>JQuery 연습중..</p>
+	<a id = "attrtest">하이퍼링크</a>
+	<a id = "attrtest2">하이퍼링크</a>
+	<div id="result"></div>
+	<form action = "">
+		<input type = "button" id = "htmlbtn" value="HTML 태그 추가하기" />
+		<input type = "button" id = "attrbtn" value="속성 추가 하기" />
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#htmlbtn").on("click", function() {
+				$("#result").html("<h1>추가 되는 문자열</h1>");
+			});
+			$("#attrbtn").on("click", function() {
+				$("#attrtest").attr("href", "https:www.naver.com");
+				alert($("#result").attr("id"));
+				// id 가 result 인 div 태그의 id 속성을 alert 으로 출력
+				$("#attrtest2").attr({"href":"https:www.daum.net","target":"_blank"});
+				
+			});
+			
+		});
+		/*text()->요소의 텍스트 반환
+		  html()->선택한 요소의 html태그가 포함된 컨텐츠 반환
+		  val()->입력필드의 값을 반환
+		  attr()->요소의 속성을 반환
+		  position()-> 요소의 위치 반환
+		*/
+	</script>
+</body>
+</html>
+
+
+
