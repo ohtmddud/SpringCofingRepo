@@ -24,12 +24,11 @@ public class TimeCheckAopObj {
 			System.out.println("START======================="+joinpoint.toString());
 			// 핵심 로직이 구현 된 메소드가 호출 된다.
 			obj = joinpoint.proceed();
-		} catch (Exception e) {
-			
+			return obj;
 		} finally {
 			long end = System.currentTimeMillis();
 			System.out.println("END===========================" + joinpoint.toString()+":"+(end-start));
 		}
-		return obj;
 	}
+	
 }

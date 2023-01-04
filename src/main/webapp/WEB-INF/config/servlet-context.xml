@@ -119,6 +119,24 @@
 	<context:component-scan base-package="com" />
 	<context:component-scan base-package="mapper" />
 	
+	<!-- 스프링에서 트랜잭션을 관리하는 핵심 클래스를 빈으로 등록 -->
+	<!-- 1. transactionManager 등록 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="ds"/>
+	</beans:bean>
+	<!-- xml 로 트랜잭션을 처리 / Exception 이 발생하면 rollback 처리 하겠다 -->
+	<!-- 2. Advice 등록 -->
+	<tx:advice id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 3. aop 처리 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.multi.erp.*.*Service*.*(..))" id="txpointcut"/>
+		<aop:advisor advice-ref="txadvice" pointcut-ref="txpointcut"/>
+	</aop:config>
+	
 	<!-- Spring AOP -->
 	<!-- aop 작업을 수행하는 proxy가 자동으로 감지해서 aop 등록된 것을 확인하고 실행 될 수 있도록 처리-->
 	<!-- namespaces 수정 -->
