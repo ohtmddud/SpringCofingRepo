@@ -142,4 +142,9 @@
 	<!-- namespaces 수정 -->
 	<aop:aspectj-autoproxy/>
 	
+<!-- 선언적 트랜잭션 -->
+	<!-- Advice 등록 및 AOP 처리는 좀 더 복잡한 것 처리 할 때 사용 한다 -->
+	<!-- 원리 파악 및 프록시 패턴에 대해서 알아야 한다. -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
 </beans:beans>
