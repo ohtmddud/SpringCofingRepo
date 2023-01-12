@@ -207,6 +207,13 @@
 		    <artifactId>tiles-jsp</artifactId>
 		    <version>3.0.8</version>
 		</dependency>
+		<!-- Mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>
